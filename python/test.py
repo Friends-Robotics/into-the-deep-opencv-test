@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 
-
 def main():
     cam = cv.VideoCapture(0, cv.CAP_DSHOW)
 
@@ -10,8 +9,8 @@ def main():
     lower_red2 = np.array([170, 120, 70])
     upper_red2 = np.array([180, 255, 255])
 
-    #lower_blue = np.array([100, 100, 0])
-    #upper_blue = np.array([140, 255, 255])
+    # lower_blue = np.array([100, 100, 80])
+    # upper_blue = np.array([140, 255, 255])
 
     while True:
         success, img = cam.read()
@@ -24,8 +23,8 @@ def main():
         mask2 = cv.inRange(hsv, lower_red2, upper_red2)
         final = mask1 + mask2
 
-        #mask1 = cv.inRange(hsv, lower_blue, upper_blue)
-        #final = mask1
+        # mask1 = cv.inRange(hsv, lower_blue, upper_blue)
+        # final = mask1
         
         contours, hierarchy = cv.findContours(final.copy(), cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
