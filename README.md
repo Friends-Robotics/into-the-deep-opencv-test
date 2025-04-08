@@ -15,7 +15,7 @@ As the Silver Wolves put it...
 
 ### Webcam Info
 
-We need a webcan with a wide FOV (Silver Wolves use one with 120 degrees) mounted approximately 20cm above the ground. Ideally, it will parallel the ground and have a constant height (while taking images) to make location-based calculations easier.
+We need a webcam with a wide FOV (Silver Wolves use one with 120 degrees) mounted approximately 20cm above the ground. Ideally, it will parallel the ground and have a constant height (while taking images) to make location-based calculations easier.
 <br>
 <br>
 [Choosing a webcam](https://github.com/FIRST-Tech-Challenge/FtcRobotController/wiki/Webcams-for-FTC-VisionPortal)
