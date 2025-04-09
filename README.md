@@ -25,4 +25,7 @@ In addition to this, we need to remove the fisheye distortion from the camera to
 
 ## Setting up the development environment
 
-[Venv](https://docs.python.org/3/library/venv.html) usage
+[Venv](https://docs.python.org/3/library/venv.html) usage. Please make a venv file within the python directory. There is a nested .gitignore file to prevent it being included in the git history. When cloning this repositiory it is recommended to not clone the history due to the large size of the repository. This can be done with:
+```git
+git clone <url> --depth=1
+```
