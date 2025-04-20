@@ -36,9 +36,16 @@ for fname in images:
 
 cv.destroyAllWindows()
 
-#print(f'Object points: {objpoints}')
-
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
+
+# error calculation to determine calibration accuracy
+mean_error = 0
+for i in range(len(objpoints)):
+    imgpoints2, _ = cv.projectPoints(objpoints[i], rvecs[i], tvecs[i], mtx, dist)
+    error = cv.norm(imgpoints[i], imgpoints2, cv.NORM_L2)/len(imgpoints2)
+    mean_error += error
+
+print("Total error: {}".format(mean_error/len(objpoints)))
 
 for fname in images:
         img = cv.imread(fname)
@@ -53,7 +60,7 @@ for fname in images:
         x, y, w, h = roi
         dst = dst[y:y+h, x:x+w]
 
+        # display the original and the undistorted one
         cv.imshow('img', img)
         cv.imshow('dst', dst)
         cv.waitKey(2000)
-
