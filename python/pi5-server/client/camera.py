@@ -14,10 +14,9 @@ def get_remote_image(url=f"{url}/image"):
         image = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         return image
     else:
-        return None
+        return 
 
 
 def set_servo_position():
-    curl -X POST http://<PI_IP>:5000/servo -H "Content-Type: application/json" \
-    -d '{"channel": 0, "angle": 90}'
+    /servo -H "Content-Type: application/json" json={"angle": 90, }
 
