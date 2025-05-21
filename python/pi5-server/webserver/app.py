@@ -7,12 +7,13 @@ app = Flask(__name__)
 @app.route('/servo', methods=['POST'])
 def control_servo():
     data = request.json
-    if not data or 'angle' not in data:
-        return jsonify({'error': 'Missing angle'}), 400
+    if not data or 'angle' not in data or "channel" not in data:
+        return jsonify({'error': 'Missing angle and/or channel'}), 400
 
     try:
         angle = int(data['angle'])
-        angle = move_servo(angle)
+        channel = int(data['channel'])
+        angle = move_servo(channel, angle)
         return jsonify({'status': 'ok', 'angle': angle})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -28,6 +29,7 @@ def serve_image():
     if frame:
         return Response(frame, mimetype='image/jpeg')
     return "Camera error", 500
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

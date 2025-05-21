@@ -3,14 +3,13 @@ import time
 
 # Setup PCA9685 with 16 channels
 kit = ServoKit(channels=16)
-SERVO_CHANNEL = 0
 
-def move_servo(angle):
+def move_servo(channel, angle):
     angle = max(0, min(180, angle))
-    kit.servo[SERVO_CHANNEL].angle = angle
-    time.sleep(0.5)
+    kit.servo[channel].angle = angle
     return angle
 
 def release_servo():
-    kit.servo[SERVO_CHANNEL].angle = None
+    for i in range(16):
+        kit.servo[i].angle = None
 
