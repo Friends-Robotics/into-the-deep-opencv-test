@@ -4,7 +4,7 @@ import requests
 
 
 pi_ip = "192.168.1.60"
-url = f"http://{pi_ip}:5000")
+url = f"http://{pi_ip}:5000"
 
 
 def get_remote_image(url=f"{url}/image"):
@@ -14,9 +14,9 @@ def get_remote_image(url=f"{url}/image"):
         image = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         return image
     else:
-        return 
+        return None
 
 
-def set_servo_position():
-    /servo -H "Content-Type: application/json" json={"angle": 90, }
+def set_servo_position(channel, angle):
+    requests.post(f"{url}/servo", json={"channel": channel, "angle": angle })
 

@@ -45,6 +45,7 @@ for i in range(len(objpoints)):
     error = cv.norm(imgpoints[i], imgpoints2, cv.NORM_L2)/len(imgpoints2)
     mean_error += error
 
+print(f"ret: {ret}\nmtx: {mtx}\ndist: {dist}\nrvecs: {rvecs}\n: {tvecs}")
 print("Total error: {}".format(mean_error/len(objpoints)))
 
 for fname in images:
